@@ -10,7 +10,8 @@ var gulp          = require('gulp'),
 		rename        = require('gulp-rename'),
 		autoprefixer  = require('gulp-autoprefixer'),
 		notify        = require("gulp-notify"),
-		rsync         = require('gulp-rsync');
+		rsync         = require('gulp-rsync'),
+		connect       = require("gulp-connect-php");
 
 gulp.task('browser-sync', function() {
 	browsersync({
