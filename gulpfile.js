@@ -11,19 +11,19 @@ var gulp          = require('gulp'),
 		autoprefixer  = require('gulp-autoprefixer'),
 		notify        = require("gulp-notify"),
 		rsync         = require('gulp-rsync'),
+		del           = require('del'),
+		imagemin      = require('gulp-imagemin'),
 		connect       = require("gulp-connect-php");
 
 gulp.task('browser-sync', function() {
-	browsersync({
-		server: {
-			baseDir: 'app'
-		},
-		notify: false,
-		// open: false,
+	connect.server({}, function (){
+		browsersync({
+			proxy: 'localhost/YourDir/app/',
+			notify: false,
 		// tunnel: true,
-		// tunnel: "projectname", //Demonstration page: http://projectname.localtunnel.me
-	})
-});
+		// tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
+	});
+});});
 
 gulp.task('styles', function() {
 	return gulp.src('app/'+syntax+'/**/*.'+syntax+'')
