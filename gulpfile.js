@@ -18,7 +18,7 @@ var gulp          = require('gulp'),
 gulp.task('browser-sync', function() {
 	connect.server({}, function (){
 		browsersync({
-			proxy: 'localhost/YourDir/app/',
+			proxy: 'localhost/htmltemp/app/',
 			notify: false,
 		// tunnel: true,
 		// tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
@@ -38,6 +38,8 @@ gulp.task('styles', function() {
 gulp.task('js', function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
+		// 'app/libs/fancybox/jquery.fancybox.js',
+		// 'app/libs/tablesorter/jquery.tablesorter.js',
 		'app/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
@@ -64,7 +66,7 @@ gulp.task('rsync', function() {
 gulp.task('watch', ['styles', 'js', 'browser-sync'], function() {
 	gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
-	gulp.watch('app/*.html', browsersync.reload)
+	gulp.watch('app/**/*.php', browsersync.reload)
 });
 
 gulp.task('default', ['watch']);
